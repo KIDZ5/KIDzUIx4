@@ -1,0 +1,13 @@
+name: Preserve Original UI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original source has not been modified
+        run: python3 scripts/build.py --check
